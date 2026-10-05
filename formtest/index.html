@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Form test — OVAL</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 520px; margin: 60px auto; padding: 0 16px; line-height: 1.5; background: #f6f3ee; color: #0b1530; }
+    input, textarea, button { font: inherit; width: 100%; padding: .7rem; margin: .4rem 0 1rem; border: 1px solid #d9d2c6; border-radius: 10px; box-sizing: border-box; }
+    button { background: #ff5a4e; color: #fff; border: 0; cursor: pointer; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Form delivery test</h1>
+  <p>Temporary page for checking email delivery. Pressing Send takes you to FormSubmit's own page, which shows exactly what happened (activation needed, an error, or success).</p>
+  <form action="https://formsubmit.co/caddyt@oval-ltd.com" method="POST">
+    <input type="hidden" name="_subject" value="OVAL website: delivery test">
+    <input type="hidden" name="_template" value="table">
+    <label>Name<input name="name" value="Delivery test" required></label>
+    <label>Message<textarea name="message" required>Testing FormSubmit delivery from the OVAL site.</textarea></label>
+    <button type="submit">Send test</button>
+  </form>
+</body>
+</html>
