@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oval-ltd.com/sitemap.xml

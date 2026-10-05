@@ -146,6 +146,11 @@
           <button type="submit">Join</button></form>
           <p class="nl-done" hidden style="margin-top:.6rem">Subscribed. An agent will read this for you.</p></div>
       </div>
+      <div class="fiction-note">
+        <b>A work of fiction.</b> OVAL is not a real company. This site is world-building for
+        <i>The Takeover</i>, a satirical novel by [Francois Domain]. All names, people, products and events are invented.
+        <a href="${link("legal/#fiction")}">Read the disclaimer</a>
+      </div>
       <div class="footer-base">
         <span>&copy; 2038 OmniValence Agentic Leasing. Errors may occur. Shit happens.</span>
         <span>Served from High Orbit &middot; latency to the Ground: 412&nbsp;ms</span>

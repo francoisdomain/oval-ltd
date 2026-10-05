@@ -462,3 +462,6 @@ table.data td.num { font-family: var(--mono); white-space: nowrap; }
 .redact:hover { color: #fff; }
 .err { min-height: 70vh; display: grid; place-items: center; text-align: center; }
 .err .code { font-family: var(--head); font-size: clamp(6rem, 18vw, 12rem); font-weight: 700; line-height: 1; color: var(--accent); letter-spacing: -.05em; }
+
+.fiction-note { margin-top: 48px; padding: 16px 20px; border: 1px solid #26346a; border-radius: 16px; font-size: .86rem; color: #c9d1ea; }
+.fiction-note a { color: var(--accent-2); text-decoration: underline; margin-left: .3rem; }
