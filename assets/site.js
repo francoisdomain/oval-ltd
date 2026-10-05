@@ -142,9 +142,11 @@
           <li><a href="${link("accessibility/")}">Accessibility</a></li></ul></div>
         <div class="newsletter"><h4>Newsletter</h4>
           <p>Get updates. You have time.</p>
-          <form><input type="email" placeholder="Your email" aria-label="Email" required>
+          <form><input type="email" name="email" placeholder="Your email" aria-label="Email" required>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
           <button type="submit">Join</button></form>
-          <p class="nl-done" hidden style="margin-top:.6rem">Subscribed. An agent will read this for you.</p></div>
+          <p class="nl-done" hidden style="margin-top:.6rem">Subscribed. An agent will read this for you.</p>
+          <p class="nl-err" hidden style="margin-top:.6rem;color:#ffb4ad">Lost in a solar flare. Please try again.</p></div>
       </div>
       <div class="fiction-note">
         <b>A work of fiction.</b> OVAL is not a real company. This site is world-building for
@@ -156,10 +158,28 @@
         <span>Served from High Orbit &middot; latency to the Ground: 412&nbsp;ms</span>
       </div>
     </div>`;
-  footer.querySelector(".newsletter form").addEventListener("submit", (e) => {
+  // Newsletter signups are emailed through FormSubmit (same address as the Contact page forms).
+  const NEWSLETTER_ENDPOINT = "https://formsubmit.co/ajax/caddyt@oval-ltd.com";
+  footer.querySelector(".newsletter form").addEventListener("submit", async (e) => {
     e.preventDefault();
-    e.target.hidden = true;
-    footer.querySelector(".nl-done").hidden = false;
+    const f = e.target, btn = f.querySelector("button");
+    if (f._honey.value) return; // bot
+    btn.disabled = true;
+    try {
+      const r = await fetch(NEWSLETTER_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ email: f.email.value, _subject: "OVAL website: Newsletter signup", _template: "table",
+          page: location.pathname }),
+      });
+      if (!r.ok) throw new Error(r.status);
+      f.hidden = true;
+      footer.querySelector(".nl-err").hidden = true;
+      footer.querySelector(".nl-done").hidden = false;
+    } catch (x) {
+      footer.querySelector(".nl-err").hidden = false;
+      btn.disabled = false;
+    }
   });
   body.append(footer);
 

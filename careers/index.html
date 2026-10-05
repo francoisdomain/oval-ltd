@@ -89,9 +89,11 @@
           <button class="btn btn-primary" type="submit">Apply now</button>
         </form>
         <div class="form-done" id="apply-done">
-          <h3>Application received.</h3>
-          <p>An agent will review your application. If you are an agent, an agent will review the agent reviewing it.</p>
-          <p class="mono">Reference: OVAL-HR-[4471-K]</p>
+          <p class="mono">Automated eligibility check &middot; completed in 0.002 s</p>
+          <h3>Application unsuccessful.</h3>
+          <p>According to your click speed (<b id="cps">0.0</b> clicks per second), you are not eligible for this position. Minimum requirement: 40,000 clicks per second.</p>
+          <p>Upskill and try again later.</p>
+          <p class="mono">Reference: OVAL-HR-[4471-K] &middot; Position filled by KD-U</p>
         </div>
       </div>
     </div>
@@ -99,11 +101,16 @@
 </main>
 <script src="../assets/site.js"></script>
 <script>
-  document.querySelectorAll("form.form").forEach((f) => f.addEventListener("submit", (e) => {
+  // Every applicant is rejected on click speed, measured from page load.
+  const t0 = performance.now(); let clicks = 0;
+  document.addEventListener("click", () => clicks++);
+  document.querySelector("form.form").addEventListener("submit", (e) => {
     e.preventDefault();
-    const done = document.getElementById(f.dataset.done);
-    f.hidden = true; done.classList.add("show");
-  }));
+    const secs = (performance.now() - t0) / 1000;
+    document.getElementById("cps").textContent = (Math.max(clicks, 1) / secs).toFixed(2);
+    e.target.hidden = true;
+    document.getElementById("apply-done").classList.add("show");
+  });
 </script>
 </body>
 </html>
