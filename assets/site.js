@@ -139,6 +139,7 @@
         <div><h4>Legal</h4><ul>
           <li><a href="${link("legal/")}">Terms &amp; Privacy</a></li>
           <li><a href="${link("legal/#cookies")}">Cookie Policy</a></li>
+          <li><a href="#" class="cookie-settings">Cookie settings</a></li>
           <li><a href="${link("accessibility/")}">Accessibility</a></li></ul></div>
         <div class="newsletter"><h4>Newsletter</h4>
           <p>Get updates. You have time.</p>
@@ -183,25 +184,51 @@
   });
   body.append(footer);
 
-  /* ---------- Cookie banner ---------- */
-  let consented = false;
-  try { consented = localStorage.getItem("oval-cookies") === "yes"; } catch (e) {}
-  if (!consented) {
+  /* ---------- Cookie banner + Google Analytics (loads only after consent) ---------- */
+  const GA_ID = "G-SGHKWDCTV8";
+  function loadAnalytics() {
+    if (window.__ovalGA) return;
+    window.__ovalGA = true;
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+    document.head.append(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag("js", new Date());
+    gtag("config", GA_ID);
+  }
+  let consent = null;
+  try { consent = localStorage.getItem("oval-consent"); } catch (e) {}
+  if (consent === "yes") loadAnalytics();
+
+  function showCookieBanner() {
+    if (document.querySelector(".cookie")) return;
     const cookie = document.createElement("div");
     cookie.className = "cookie";
     cookie.setAttribute("role", "dialog");
     cookie.setAttribute("aria-label", "Cookie consent");
     cookie.innerHTML = `<p><b>We use cookies</b> to improve your experience. We also use your biometrics,
       livestream, dictation speed and dreams.</p>
-      <div class="row"><button class="btn btn-primary">Accept</button><button class="btn btn-ghost">Accept</button></div>`;
-    cookie.querySelectorAll("button").forEach((b) =>
+      <div class="row"><button class="btn btn-primary" data-c="yes">Accept</button><button class="btn btn-ghost" data-c="yes">Accept</button></div>
+      <p class="cookie-real">Out of character: the only real cookies here are Google Analytics, which counts visitors.
+      <button class="linklike" data-c="no">Actually, no thanks</button> &middot; We'll respect that. Unlike everything else on this site.</p>`;
+    cookie.querySelectorAll("button[data-c]").forEach((b) =>
       b.addEventListener("click", () => {
-        try { localStorage.setItem("oval-cookies", "yes"); } catch (e) {}
+        const v = b.dataset.c;
+        try { localStorage.setItem("oval-consent", v); } catch (e) {}
+        if (v === "yes") loadAnalytics();
         cookie.remove();
       })
     );
     body.append(cookie);
   }
+  if (consent !== "yes" && consent !== "no") showCookieBanner();
+  footer.querySelector(".cookie-settings").addEventListener("click", (e) => {
+    e.preventDefault();
+    try { localStorage.removeItem("oval-consent"); } catch (x) {}
+    showCookieBanner();
+  });
 
   /* ---------- Chatbot: CaddyT (KD-T) ---------- */
   const launch = document.createElement("button");
