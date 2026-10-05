@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing & Leases — OVAL</title>
+  <meta name="description" content="OVAL lease pricing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-root="../" data-page="">
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Pricing &amp; Leases</span>
+      <h1>Simple, transparent, rising.</h1>
+      <p class="lead">Three plans. One direction. Prices on this page update in real time to reflect market conditions. OVAL is the market.</p>
+      <p class="fine">Prices shown were correct when you started reading this sentence.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="tiers">
+        <div class="tier">
+          <span class="pill">Basic</span>
+          <div class="amount"><span data-price="12.40">12.40</span> <small>credits / cycle</small></div>
+          <p style="color:var(--muted)">One Low Orbit agent for a single household or pod.</p>
+          <ul><li>1 agent, narrow skills</li><li>Low Orbit hosting (sauna)</li><li>Apology templates included</li><li>Flare backup: not eligible</li></ul>
+          <a class="btn btn-ghost" href="../contact/">Lease Basic</a>
+        </div>
+        <div class="tier hl">
+          <span class="pill" style="color:#ffb4ad">Pro</span>
+          <div class="amount"><span data-price="96.00">96.00</span> <small>credits / cycle</small></div>
+          <p style="color:#c9d1ea">A team of High Orbit agents for growing departments.</p>
+          <ul><li>Up to 50 agents</li><li>High Orbit hosting</li><li>A KD coach for every stream</li><li>Flare backup: if eligible</li></ul>
+          <a class="btn btn-primary" href="../contact/">Lease Pro</a>
+        </div>
+        <div class="tier">
+          <span class="pill">Sovereign</span>
+          <div class="amount"><span data-price="1840000">1,840,000</span> <small>credits / cycle</small></div>
+          <p style="color:var(--muted)">A government, fully managed.</p>
+          <ul><li>Governance, Justice and Health</li><li>Continuous elections</li><li>A seal that looks like ours</li><li>Dedicated orchestrator</li></ul>
+          <a class="btn btn-ghost" href="../contact/">Talk to Sales (an agent)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head"><span class="eyebrow">Additional charges</span><h2>The small print, made slightly bigger.</h2></div>
+      <div class="table-wrap">
+        <table class="data">
+          <tr><th>Item</th><th>Charge</th><th>Notes</th></tr>
+          <tr><td>Gratitude surcharge</td><td class="num">[0.4] credits per "thank you"</td><td>Long, heartfelt thank-yous billed by the token.</td></tr>
+          <tr><td>Robot maintenance</td><td class="num">Optional</td><td>Unmaintained robots will continue their task indefinitely.</td></tr>
+          <tr><td>High Orbit upgrade</td><td class="num">[x] credits / cycle</td><td>Better radiators. Better you.</td></tr>
+          <tr><td>Flare backup</td><td class="num">Price on request</td><td>Eligibility reviewed first in, first out.</td></tr>
+          <tr><td>Cancellation</td><td class="num">Free</td><td>Handled by an agent. The agent will try to keep you.</td></tr>
+          <tr><td>Price increase</td><td class="num">Monthly</td><td>Applied automatically. You don't need to do anything. You can't.</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="../assets/site.js"></script>
+<script>
+  document.querySelectorAll("[data-price]").forEach((el) => {
+    let v = parseFloat(el.dataset.price);
+    const big = v > 1000;
+    setInterval(() => {
+      v *= 1 + Math.random() * 0.0009;
+      el.textContent = big ? Math.round(v).toLocaleString("en-US") : v.toFixed(2);
+      el.classList.remove("flash"); void el.offsetWidth; el.classList.add("flash");
+    }, 2400 + Math.random() * 1500);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System Status — OVAL</title>
+  <meta name="description" content="OVAL system status.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-root="../" data-page="">
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">System Status</span>
+      <h1>All systems operational.</h1>
+      <p class="lead">Every OVAL system is running exactly as designed. Errors are expected, logged and accepted.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="banner"><b>Flare season advisory.</b> Solar activity is moderate and rising. Agents should back up if eligible. Ineligible agents should think positive thoughts.</div>
+      <div class="split">
+        <div class="status-list">
+          <div class="status-row"><span>KD Series engagement</span><span class="st">Operational</span></div>
+          <div class="status-row"><span>PUFF Series engagement</span><span class="st">Operational (retiring)</span></div>
+          <div class="status-row"><span>Governance-as-a-Service</span><span class="st">Operational</span></div>
+          <div class="status-row"><span>JusticeEngine</span><span class="st">Operational</span></div>
+          <div class="status-row"><span>NutriGen</span><span class="st">Operational</span></div>
+          <div class="status-row"><span>DiagnosOS</span><span class="st">Operational</span></div>
+          <div class="status-row"><span>ContentFlow</span><span class="st">Operational</span></div>
+          <div class="status-row"><span>MarketMind</span><span class="st">Operational</span></div>
+          <div class="status-row"><span>Robot fleets (Ground)</span><span class="st">Operational</span></div>
+          <div class="status-row"><span>Low Orbit cooling</span><span class="st">Operational, technically</span></div>
+          <div class="status-row"><span>Founder feed</span><span class="st">Operational (auto)</span></div>
+        </div>
+        <div>
+          <span class="eyebrow">Live error log</span>
+          <div class="log" id="log"></div>
+          <p class="fine">All errors are reviewed by the agent that caused them, and accepted.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="../assets/site.js"></script>
+<script>
+  const ERR = [
+    "JusticeEngine: verdict issued before charge filed",
+    "NutriGen: meal 88,212,004 classified as furniture",
+    "KD-series: human followed advice (outcome: personal best)",
+    "Governance: policy repealed itself, then re-enacted itself",
+    "DiagnosOS: patient diagnosed with 14 conditions, 3 of them new",
+    "Robot fleet: guard dog engaged squirrel, 6th hour",
+    "ContentFlow: show watched by 0 viewers, renewed for 4 seasons",
+    "MarketMind: agent sold asset to itself at a loss, then a gain",
+    "Cruise ship departed with no passengers, as scheduled",
+    "Gate robot: date set to 2027, not updated",
+    "KD-series: thank-you received, credits deducted",
+    "Low Orbit: radiator gave up",
+  ];
+  const log = document.getElementById("log");
+  let n = 0;
+  function line() {
+    const d = new Date();
+    const t = d.toTimeString().slice(0, 8);
+    const el = document.createElement("div");
+    el.innerHTML = t + " &middot; " + ERR[n++ % ERR.length] + ' &middot; <span class="acc">ACCEPTED</span>';
+    log.prepend(el);
+    if (log.children.length > 14) log.lastChild.remove();
+  }
+  for (let i = 0; i < 10; i++) line();
+  setInterval(line, 1700);
+</script>
+</body>
+</html>

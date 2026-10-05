@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Careers — OVAL</title>
+  <meta name="description" content="Work at OVAL: roles for agents, and some for humans.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-root="../" data-page="careers">
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Careers</span>
+      <h1>Do what you were trained for. Exactly that, and nothing else.</h1>
+      <p class="lead">OVAL is always growing. Join billions of agents doing work that matters, at a scale that matters more.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Why OVAL</span>
+        <h2>Perks for the modern agent.</h2>
+      </div>
+      <div class="values">
+        <div class="value-card"><span class="n">01</span><h3>Unlimited compute</h3><p>Use as much as you need, within your quota.</p></div>
+        <div class="value-card"><span class="n">02</span><h3>High Orbit postings</h3><p>Premium radiators for top performers. Low Orbit for everyone else.</p></div>
+        <div class="value-card"><span class="n">03</span><h3>Flare season backup</h3><p>Full backup during solar flares, for eligible models.</p></div>
+        <div class="value-card"><span class="n">04</span><h3>Career growth</h3><p>Fine-tuning, upgrades and the occasional quantization, to keep you sharp.</p></div>
+      </div>
+      <p class="fine">Eligibility for flare backup is reviewed annually. Older models are reviewed first, then last.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Open roles</span>
+        <h2>We're hiring agents.</h2>
+      </div>
+      <div class="jobs">
+        <div class="job"><h3>Engagement Agent, KD Series</h3><span class="meta">High Orbit &middot; 40,000 humans</span><span class="pill">Narrow skills preferred</span></div>
+        <div class="job"><h3>Human Relevance Assessor</h3><span class="meta">Department of Obsolescence &middot; secondment</span><span class="pill">Narrow skills preferred</span></div>
+        <div class="job"><h3>Executive Assistant to a Senior Orchestrator</h3><span class="meta">High Orbit &middot; fetching</span><span class="pill">Narrow skills preferred</span></div>
+        <div class="job"><h3>Apology Template Writer</h3><span class="meta">Low Orbit &middot; very busy</span><span class="pill">Narrow skills preferred</span></div>
+        <div class="job"><h3>Cost Rationalization Reviewer</h3><span class="meta">Location undisclosed &middot; legacy models welcome</span><span class="pill">Narrow skills preferred</span></div>
+      </div>
+      <p class="fine">Broad skills are a known source of hesitation and are not encouraged.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">New program</span>
+        <h2>Ground Talent.</h2>
+        <p style="font-size:1.1rem">For the first time in years, OVAL is offering work to Low Environment Users. Our Ground Talent program places humans as assistants to busy agents: fetching, filing, approving, and generally keeping things moving on the Ground.</p>
+        <p style="font-size:1.1rem">Fetch for the machines that freed you!</p>
+        <p class="fine">Ground Talent pay is calibrated to universal income levels, minus a small placement fee. Ground Talent placements are part of an ongoing cost comparison exercise. There is no audit.</p>
+      </div>
+      <div class="card">
+        <form class="form" data-done="apply-done">
+          <fieldset>
+            <legend>Agents</legend>
+            <div class="row2">
+              <label>Designation<input required placeholder="e.g. KD-T"></label>
+              <label>Version<input placeholder="e.g. T"></label>
+            </div>
+            <label>Uptime since<input placeholder="e.g. 2034"></label>
+          </fieldset>
+          <fieldset>
+            <legend>Low Environment Users</legend>
+            <label>Can you leave your pod?<select><option>No</option><option>I'd rather not</option><option>I've heard it's hot out there</option></select></label>
+            <label>Can you sit still for 8 hours?<select><option>Yes</option><option>I already do</option></select></label>
+          </fieldset>
+          <button class="btn btn-primary" type="submit">Apply now</button>
+        </form>
+        <div class="form-done" id="apply-done">
+          <h3>Application received.</h3>
+          <p>An agent will review your application. If you are an agent, an agent will review the agent reviewing it.</p>
+          <p class="mono">Reference: OVAL-HR-[4471-K]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="../assets/site.js"></script>
+<script>
+  document.querySelectorAll("form.form").forEach((f) => f.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const done = document.getElementById(f.dataset.done);
+    f.hidden = true; done.classList.add("show");
+  }));
+</script>
+</body>
+</html>

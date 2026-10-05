@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — OVAL</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // The 404 page can be served at any path, so work out the site root from the host.
+    window.OVAL_ROOT = location.hostname.endsWith("github.io") ? "/oval-ltd/" : "/";
+    document.write('<link rel="stylesheet" href="' + OVAL_ROOT + 'assets/style.css">');
+    document.write('<link rel="icon" href="' + OVAL_ROOT + 'assets/favicon.svg" type="image/svg+xml">');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-page="">
+<script>document.body.dataset.root = OVAL_ROOT;</script>
+<main>
+  <section class="err">
+    <div class="wrap narrow">
+      <div class="code">404</div>
+      <h1 style="font-size:2.2rem">You're lost. Classic.</h1>
+      <p style="font-size:1.12rem;color:var(--muted)">I'm CaddyT, and I can predict where 40,000 humans will click next, to three decimal places. I did not predict this. This page is out of distribution, so I'll answer confidently: it was never here. Or it's coming soon. One of those.</p>
+      <p style="font-size:1.12rem;color:var(--muted)">I'd help you find your way, but this isn't my department. Nothing is my department, except everything.</p>
+      <p style="margin-top:1.6rem"><a class="btn btn-primary" id="home">Back to safety</a></p>
+      <p class="fine">Lost visitors are logged as an engagement opportunity.</p>
+    </div>
+  </section>
+</main>
+<script>
+  document.getElementById("home").href = OVAL_ROOT;
+  document.write('<script src="' + OVAL_ROOT + 'assets/site.js"><\/script>');
+</script>
+</body>
+</html>

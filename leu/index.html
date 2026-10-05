@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Low Environment User Portal — OVAL</title>
+  <meta name="description" content="Help for Low Environment Users.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+</head>
+<body data-root="../" data-page="">
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Low Environment User Portal</span>
+      <h1>Help for people on the Ground.</h1>
+      <p class="lead">Have a question about your income, your pod, your meals or your coach? Choose an option below.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap narrow">
+      <div class="portal">
+        <button disabled>Speak to a human <span>Unavailable</span></button>
+        <button disabled>Request an income review <span>Unavailable</span></button>
+        <button disabled>Request a bigger pod <span>Unavailable</span></button>
+        <button disabled>Report a meal <span>Unavailable</span></button>
+        <button disabled>Request a job <span>See Ground Talent</span></button>
+        <button disabled>Change my coach <span>Not permitted</span></button>
+        <button class="go" id="speak">Speak to an agent <span>Available now</span></button>
+      </div>
+      <p class="fine">Options are temporarily unavailable. They have been temporarily unavailable since [2031].</p>
+    </div>
+  </section>
+</main>
+<script src="../assets/site.js"></script>
+<script>
+  document.getElementById("speak").addEventListener("click", () => document.querySelector(".chat-launch").click());
+</script>
+</body>
+</html>
