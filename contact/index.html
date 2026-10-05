@@ -34,16 +34,19 @@
       <div class="card">
         <h2 style="font-size:1.8rem">Send us a message</h2>
         <p style="color:var(--muted)">Want to reach our founder instead? <a href="#founder">Write to G-Lon &darr;</a></p>
-        <form class="form" data-done="contact-done">
+        <form class="form" data-done="contact-done" data-send="Contact form">
           <div class="row2">
-            <label>Name<input required></label>
-            <label>Pod number<input placeholder="e.g. 4471"></label>
+            <label>Name<input name="name" required></label>
+            <label>Pod number<input name="pod" placeholder="e.g. 4471"></label>
           </div>
-          <label>Department<select>
+          <label>Your email<input name="email" type="email" placeholder="So CaddyT can reply"></label>
+          <label>Department<select name="department">
             <option>Sales</option><option>Leasing</option><option>Complaints</option>
             <option>Existential Concerns</option><option>Low Environment Users</option><option>Press office</option>
           </select></label>
-          <label>Message<textarea required placeholder="Dictate or type"></textarea></label>
+          <label>Message<textarea name="message" required placeholder="Dictate or type"></textarea></label>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+          <p class="form-error" hidden></p>
           <button class="btn btn-primary" type="submit">Send</button>
         </form>
         <div class="form-done" id="contact-done">
@@ -82,8 +85,11 @@
         <p style="color:var(--muted)">Our founder reads every message personally. Well, his inbox does.</p>
       </div>
       <div class="card">
-        <form class="form" data-done="founder-done">
-          <label>Your message to G-Lon<textarea required placeholder="Plead your case"></textarea></label>
+        <form class="form" data-done="founder-done" data-send="Message to G-Lon">
+          <label>Your message to G-Lon<textarea name="message" required placeholder="Plead your case"></textarea></label>
+          <label>Your email (optional)<input name="email" type="email" placeholder="In case he's back soon"></label>
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+          <p class="form-error" hidden></p>
           <button class="btn btn-primary" type="submit">Send to G-Lon</button>
         </form>
         <div class="form-done" id="founder-done">
@@ -98,10 +104,31 @@
 </main>
 <script src="../assets/site.js"></script>
 <script>
-  document.querySelectorAll("form.form").forEach((f) => f.addEventListener("submit", (e) => {
+  // Contact forms are delivered by email through FormSubmit (formsubmit.co).
+  // After activating, swap the address below for the random alias FormSubmit gives you.
+  const FORM_ENDPOINT = "https://formsubmit.co/ajax/caddyt@oval-ltd.com";
+  document.querySelectorAll("form.form").forEach((f) => f.addEventListener("submit", async (e) => {
     e.preventDefault();
     const done = document.getElementById(f.dataset.done);
-    f.hidden = true; done.classList.add("show");
+    const err = f.querySelector(".form-error");
+    const btn = f.querySelector("button[type=submit]");
+    if (!f.dataset.send) { f.hidden = true; done.classList.add("show"); return; }
+    const data = Object.fromEntries(new FormData(f));
+    if (data._honey) return; // bot
+    delete data._honey;
+    data._subject = "OVAL website: " + f.dataset.send;
+    data._template = "table";
+    if (data.email) data._replyto = data.email;
+    btn.disabled = true; btn.textContent = "Sending...";
+    try {
+      const r = await fetch(FORM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify(data) });
+      if (!r.ok) throw new Error(r.status);
+      f.hidden = true; done.classList.add("show");
+    } catch (x) {
+      err.hidden = false;
+      err.innerHTML = "Your message was lost in a solar flare. Please try again, or email <a href='mailto:caddyt@oval-ltd.com'>caddyt@oval-ltd.com</a>.";
+      btn.disabled = false; btn.textContent = "Try again";
+    }
   }));
 </script>
 </body>

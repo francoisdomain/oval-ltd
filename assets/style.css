@@ -465,3 +465,6 @@ table.data td.num { font-family: var(--mono); white-space: nowrap; }
 
 .fiction-note { margin-top: 48px; padding: 16px 20px; border: 1px solid #26346a; border-radius: 16px; font-size: .86rem; color: #c9d1ea; }
 .fiction-note a { color: var(--accent-2); text-decoration: underline; margin-left: .3rem; }
+
+.form-error { color: var(--accent); font-size: .9rem; margin: 0; }
+.form-error a { color: inherit; }

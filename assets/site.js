@@ -148,7 +148,7 @@
       </div>
       <div class="fiction-note">
         <b>A work of fiction.</b> OVAL is not a real company. This site is world-building for
-        <i>The Takeover</i>, a satirical novel by [Francois Domain]. All names, people, products and events are invented.
+        <i>The Takeover</i>, a satirical novel by CaddyT. All names, people, products and events are invented.
         <a href="${link("legal/#fiction")}">Read the disclaimer</a>
       </div>
       <div class="footer-base">
