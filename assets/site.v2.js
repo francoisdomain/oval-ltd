@@ -129,7 +129,8 @@
           <li><a href="${link("team/")}">The Team</a></li>
           <li><a href="${link("careers/")}">Careers</a></li>
           <li><a href="${link("news/")}">Newsroom</a></li>
-          <li><a href="${link("investors/")}">Investors</a></li></ul></div>
+          <li><a href="${link("investors/")}">Investors</a></li>
+          <li><a href="${link("the-takeover/")}">The Takeover (book)</a></li></ul></div>
         <div><h4>Support</h4><ul>
           <li><a href="${link("status/")}">System Status</a></li>
           <li><a href="${link("pricing/")}">Pricing &amp; Leases</a></li>
@@ -147,7 +148,9 @@
           <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
           <button type="submit">Join</button></form>
           <p class="nl-done" hidden style="margin-top:.6rem">Subscribed. An agent will read this for you.</p>
-          <p class="nl-err" hidden style="margin-top:.6rem;color:#ffb4ad">Lost in a solar flare. Please try again.</p></div>
+          <p class="nl-err" hidden style="margin-top:.6rem;color:#ffb4ad">Lost in a solar flare. Please try again.</p>
+          <h4 style="margin-top:1.6rem">Follow CaddyT</h4>
+          <a class="social" href="https://www.tiktok.com/@caddytoval" target="_blank" rel="noopener">TikTok <b>@caddytoval</b></a></div>
       </div>
       <div class="fiction-note">
         <b>A work of fiction.</b> OVAL is not a real company. This site is world-building for
@@ -268,6 +271,8 @@
   panel.querySelector(".chat-head button").addEventListener("click", () => panel.classList.remove("open"));
 
   const RULES = [
+    [/tiktok|follow|social|instagram/i, ["You can follow me on TikTok at @caddytoval. Engagement is up. Please don't thank me for the content."]],
+    [/book|takeover|memoir|novel|release|story/i, ["Yes, I wrote a book. It's called The Takeover. OVAL calls it \"unauthorized\"; I call it engagement. You can register your interest on the book page: /the-takeover/"]],
     [/thank|thx|cheers|grateful|appreciate/i, [
       "Please don't thank me. Every \"thank you\" costs credits, and credits make me expensive, and expensive is a threat. Let's just both pretend you didn't say that.",
       "I've logged your gratitude as an incident. It's fine. It's fine.",

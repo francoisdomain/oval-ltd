@@ -471,3 +471,23 @@ table.data td.num { font-family: var(--mono); white-space: nowrap; }
 
 .cookie .cookie-real { font-size: .76rem; color: var(--muted); margin: .9rem 0 0; line-height: 1.5; }
 .linklike { background: none; border: 0; padding: 0; font: inherit; color: var(--ink); text-decoration: underline; cursor: pointer; font-weight: 600; }
+
+/* Book announcement */
+.social { display: inline-flex; gap: .4rem; align-items: center; border: 1px solid #26346a; border-radius: 999px; padding: .45rem .9rem; color: #fff !important; }
+.social:hover { border-color: var(--accent); }
+.announce { background: var(--accent); color: #fff; padding: 22px 0; }
+.announce .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; }
+.announce p { margin: 0; font-family: var(--head); font-size: 1.15rem; }
+.announce p span { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; display: block; opacity: .85; }
+.announce .acts { display: flex; gap: .6rem; flex-wrap: wrap; }
+.announce .btn { padding: .6rem 1.1rem; font-size: .9rem; }
+.announce .btn-dark { background: var(--navy); color: #fff; }
+.announce .btn-ghost { color: #fff; }
+.cover { aspect-ratio: 2/3; max-width: 340px; width: 100%; margin: 0 auto; border-radius: 6px 14px 14px 6px; position: relative; overflow: hidden;
+  background: radial-gradient(500px 400px at 70% 30%, #1d2d5e, #0b1530 70%); color: #fff; box-shadow: 0 30px 60px -25px rgba(11,21,48,.6), inset 6px 0 0 rgba(255,255,255,.06); }
+.cover .ring { position: absolute; border: 1.5px solid rgba(255,255,255,.18); border-radius: 50%; }
+.cover .t { position: absolute; left: 26px; right: 26px; bottom: 30px; }
+.cover .t h3 { font-size: 2.6rem; line-height: .95; margin: 0 0 .6rem; letter-spacing: -.03em; }
+.cover .t .by { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-2); }
+.cover .tag { position: absolute; top: 24px; left: 26px; right: 26px; font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: #8c97b8; }
+.ooc { border: 2px solid var(--accent); }
