@@ -491,3 +491,5 @@ table.data td.num { font-family: var(--mono); white-space: nowrap; }
 .cover .t .by { font-family: var(--mono); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-2); }
 .cover .tag { position: absolute; top: 24px; left: 26px; right: 26px; font-family: var(--mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: #8c97b8; }
 .ooc { border: 2px solid var(--accent); }
+
+img.portrait { filter: none; object-fit: cover; width: 100%; height: auto; background: var(--paper-2); }
